@@ -21,6 +21,7 @@ spec:
   selector: 
    project: expense
    tier: db
+   type: mysql
   ports: 
   - name: mysql-headless-svc-port
     protocol: TCP
@@ -37,6 +38,7 @@ spec:
   selector: 
    project: expense
    tier: db
+   type: mysql
   ports: 
   - name: mysql-svc-port
     protocol: TCP
@@ -52,12 +54,14 @@ spec:
     matchLabels:
       project: expense # has to match .spec.template.metadata.labels
       tier: db
+      type: mysql
   replicas: 2 # by default is 1
   template:
     metadata:
       labels:
         project: expense # has to match .spec.selector.matchLabels
         tier: db
+        type: mysql
     spec:
       containers:
       - name: mysql
