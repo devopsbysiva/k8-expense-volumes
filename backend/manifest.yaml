@@ -28,6 +28,21 @@ spec:
       containers:
       - name: backend
         image: promptforai/backend:v1
+        envFrom:
+        - configMapRef:
+            name: backend
 ---
 kind: Service
 apiVersion: v1
+metadata:
+  name: backend-svc
+spec:
+  selector:
+    project: expense
+    tier: api
+    type: backend
+  ports: 
+  - name: backend-svc-port
+    protocol: TCP
+    port: 8080   #service port.
+    targetPort: 8080  #conatiner port.
