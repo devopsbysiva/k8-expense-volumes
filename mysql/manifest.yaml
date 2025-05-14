@@ -46,7 +46,7 @@ spec:
     targetPort: 3306  # conatinaer port
 ---
 apiVersion: apps/v1
-kind: StatefulSet
+kind: StatefulSet   # this is for db application.
 metadata:
   name: mysql
 spec:
